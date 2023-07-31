@@ -5,9 +5,18 @@ import TaskForm from "./TaskForm";
 
 export default function TaskList({ tasks, setTasks }) {
   const handleDelete = (id) => {
-    const newTasks = tasks.filter(t => t.id != id);
+    const newTasks = tasks.filter((t) => t.id != id);
     setTasks(newTasks);
-  }
+  };
+
+  const handleEdit = (task) => {
+    const taskUpdated = tasks.map((t) => {
+      if (t.id == task.id) {
+        t = task;
+      }
+    });
+    setTasks(taskUpdated);
+  };
 
   return (
     <>
@@ -19,7 +28,7 @@ export default function TaskList({ tasks, setTasks }) {
           <h2>TaskList</h2>
           <ul>
             {tasks.map((t) => (
-              <Task key={t.id} task={t} handleDelete={handleDelete} />
+              <Task key={t.id} task={t} handleDelete={handleDelete} handleEdit={handleEdit} />
             ))}
           </ul>
         </div>
