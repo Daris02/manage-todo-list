@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TaskForm() {
+export default function TaskForm({ tasks, setTasks }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -13,16 +13,16 @@ export default function TaskForm() {
           type="text"
           name="title"
           placeholder="Title"
-          className="form-control"
+          className="form-control m-2"
         />
         <input
           type="text"
           name="description"
           placeholder="Description"
-          className="form-control"
+          className="form-control m-2"
         />
-        <button type="submit" className="btn btn-success">
-          add
+        <button type="submit" className="btn btn-success w-100 m-2">
+          Add
         </button>
       </form>
     </>
