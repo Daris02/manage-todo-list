@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 export default function TaskForm({ tasks, setTasks }) {
-  const { handleSubmit, register, formState: { errors } } = useForm();
+  const { handleSubmit, register } = useForm();
   function onSubmit(newTask) {
     setTasks([...tasks, newTask]);
   }
