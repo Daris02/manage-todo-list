@@ -4,6 +4,10 @@ import Task from "./Task";
 import TaskForm from "./TaskForm";
 
 export default function TaskList({ tasks, setTasks }) {
+  const handleDelete = (id) => {
+    const newTasks = tasks.filter(t => t.id != id);
+    setTasks(newTasks);
+  }
 
   return (
     <>
@@ -15,13 +19,7 @@ export default function TaskList({ tasks, setTasks }) {
           <h2>TaskList</h2>
           <ul>
             {tasks.map((t) => (
-              <div className="card m-2">
-                <Task key={t.id} task={t} />
-                <div className="card-footer d-flex justify-content-around">
-                  <button className="btn btn-warning btn-sm w-25">Edit</button>
-                  <button className="btn btn-danger btn-sm w-25">Delete</button>
-                </div>
-              </div>
+              <Task key={t.id} task={t} handleDelete={handleDelete} />
             ))}
           </ul>
         </div>
