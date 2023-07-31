@@ -7,13 +7,13 @@ function App() {
       id: 1,
       title: "Title",
       description: "contente description",
-      finish: false,
+      isFinish: false,
     },
     {
       id: 2,
       title: "Title2",
       description: "contente description 2",
-      finish: true,
+      isFinish: true,
     },
   ]);
 
