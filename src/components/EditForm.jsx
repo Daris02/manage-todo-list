@@ -1,12 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function EditForm({ handleEdit }) {
+export default function EditForm({ task, handleEdit }) {
   const { handleSubmit, register } = useForm();
 
   function onSubmit(newTask) {
-    console.log(newTask);
-    // handleEdit(newTask);
+    task.title = newTask.title;
+    task.description = newTask.description;
+    handleEdit(task);
   }
 
   return (
@@ -18,7 +19,7 @@ export default function EditForm({ handleEdit }) {
               <h1 className="modal-title mx-auto">Edit task</h1>
             </div>
             <div className="modal-body">
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form action="submit" onSubmit={handleSubmit(onSubmit)}>
                 <input
                   type="text"
                   name="title"
@@ -34,20 +35,12 @@ export default function EditForm({ handleEdit }) {
                   {...register("description")}
                 />
                 <input type="checkbox" {...register("isFinish")} />
+                <div className="modal-footer d-flex justify-content-around">
+                  <button type="submit" className="btn btn-warning">
+                    Edit
+                  </button>
+                </div>
               </form>
-            </div>
-            <div className="modal-footer d-flex justify-content-around">
-              <button type="submit" className="btn btn-warning">
-                Edit
-              </button>
-              {/* <button
-                type="button"
-                className="btn btn-danger"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                Cancel
-              </button> */}
             </div>
           </div>
         </div>
