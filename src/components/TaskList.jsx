@@ -10,7 +10,8 @@ export default function TaskList({ tasks, setTasks }) {
   };
 
   const handleEdit = (task) => {
-    const taskUpdated = tasks.map((t) => {
+    const taskUpdated = [...tasks];
+    taskUpdated.map((t) => {
       if (t.id == task.id) {
         t = task;
       }
